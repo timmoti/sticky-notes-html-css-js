@@ -1,6 +1,6 @@
 const addNoteButton = document.querySelector('#btnNew');
-
-addNoteButton.addEventListener('click', addNewNote);
+const saveNotesButton = document.querySelector('#btnSave');
+const searchBar = document.querySelector('#searchBar');
 const notes = document.querySelector('#notes');
 
 function addNewNote(title, content) {
@@ -16,14 +16,14 @@ function addNewNote(title, content) {
   const noteContent = document.createElement('textarea');
   noteContent.setAttribute('class', 'note-content');
 
-  const image = document.createElement('img');
-  Object.assign(image, {
+  const deleteNoteButton = document.createElement('img');
+  Object.assign(deleteNoteButton, {
     className: 'hide',
     src: 'images/close.png'
   });
 
   newNote.appendChild(noteTitle);
-  newNote.appendChild(image);
+  newNote.appendChild(deleteNoteButton);
   newNote.appendChild(noteContent);
   notes.appendChild(newNote);
 
@@ -32,7 +32,7 @@ function addNewNote(title, content) {
     newestNote.parentNode.removeChild(newestNote);
   });
 
-  addNoteEvent(newestNote);
+  deleteNoteEvent(newestNote);
 
   if (title && typeof title === 'string') {
     const newNoteTitle = newestNote.querySelector('.note-title');
@@ -45,7 +45,7 @@ function addNewNote(title, content) {
   }
 }
 
-function addNoteEvent(noteElement) {
+function deleteNoteEvent(noteElement) {
   noteElement.addEventListener('mouseover', function() {
     const img = noteElement.querySelector('img');
     img.classList.remove('hide');
@@ -56,22 +56,6 @@ function addNoteEvent(noteElement) {
     img.setAttribute('class', 'hide');
   });
 }
-
-let count = 0;
-
-const storedNotes = localStorage.getItem('notes');
-if (storedNotes) {
-  const notesArray = JSON.parse(storedNotes);
-  count = notesArray.length;
-
-  for (let i = 0; i < count; i++) {
-    let storedNote = notesArray[i];
-    addNewNote(storedNote.title, storedNote.content);
-  }
-}
-
-const saveNotesButton = document.querySelector('#btnSave');
-saveNotesButton.addEventListener('click', saveNotes);
 
 function saveNotes() {
   const notesArray = new Array();
@@ -88,4 +72,22 @@ function saveNotes() {
   const jsonString = JSON.stringify(notesArray);
   localStorage.setItem('notes', jsonString);
   alert('Notes saved');
+}
+
+function searchNotes() {}
+
+addNoteButton.addEventListener('click', addNewNote);
+saveNotesButton.addEventListener('click', saveNotes);
+searchBar.addEventListener('');
+
+let count = 0;
+const storedNotes = localStorage.getItem('notes');
+if (storedNotes) {
+  const notesArray = JSON.parse(storedNotes);
+  count = notesArray.length;
+
+  for (let i = 0; i < count; i++) {
+    let storedNote = notesArray[i];
+    addNewNote(storedNote.title, storedNote.content);
+  }
 }
