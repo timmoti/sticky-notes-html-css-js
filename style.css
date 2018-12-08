@@ -14,7 +14,6 @@
 body {
   font-family: arial, sans-serif;
   font-size: 100%;
-  /* margin: 3em; */
   background: #666;
   color: #fff;
 }
@@ -105,7 +104,7 @@ ul li:focus {
 ul li textarea,
 ul li input {
   font-family: 'Chewy', arial, sans-serif;
-  background: rgba(0, 0, 0, 0); /* transparent background */
+  background: rgba(0, 0, 0, 0);
   resize: none;
   padding: 3px;
   border-style: none;
@@ -117,7 +116,6 @@ ul li input {
   font-weight: bold;
   height: 30px;
   width: 80%;
-  /* width: 70%; */
 }
 
 .note-content {
@@ -140,8 +138,4 @@ ul li h2 {
 ul li p {
   font-family: 'Reenie Beanie', arial, sans-serif;
   font-size: 180%;
-}
-
-ul li.colour {
-  background: #ffc;
 }
