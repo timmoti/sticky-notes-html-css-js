@@ -34,7 +34,7 @@ function addNewNote(title, content) {
 
   addNoteEvent(newestNote);
 
-  if (title && !MouseEvent) {
+  if (title && typeof title === 'string') {
     const newNoteTitle = newestNote.querySelector('.note-title');
     newNoteTitle.value = title;
   }
