@@ -17,6 +17,12 @@ family=Reenie+Beanie:regular"
   <body>
     <div id="controls">
       <button id="btnNew">New</button> <button id="btnSave">Save</button>
+      <input
+        type="text"
+        id="searchBar"
+        onkeyup="searchNotes()"
+        placeholder="Search Note Titles"
+      />
     </div>
 
     <ul id="notes"></ul>

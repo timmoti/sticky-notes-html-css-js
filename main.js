@@ -74,11 +74,24 @@ function saveNotes() {
   alert('Notes saved');
 }
 
-function searchNotes() {}
+function searchNotes() {
+  const input = document.querySelector('#searchBar');
+  const filter = input.value.toUpperCase();
+
+  const li = notes.getElementsByTagName('li');
+
+  for (let i = 0; i < li.length; i++) {
+    let noteTitle = li[i].getElementsByTagName('input')[0].value;
+    if (noteTitle.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = '';
+    } else {
+      li[i].style.display = 'none';
+    }
+  }
+}
 
 addNoteButton.addEventListener('click', addNewNote);
 saveNotesButton.addEventListener('click', saveNotes);
-searchBar.addEventListener('');
 
 let count = 0;
 const storedNotes = localStorage.getItem('notes');
